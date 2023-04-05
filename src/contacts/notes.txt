@@ -1,0 +1,17 @@
+for phonebook_details:
+
+every record is 232 characters long.
+
+from 0 to 42 there is the home number.char offset is 0.
+
+from 43 to 85 there is the company name.char offset is 43.
+
+from 86 to 145 there is the email.char offset is 86.
+
+from 145 to 187 there is the work number.char offset is 145.
+
+last 45 chars(which can actually be reduced) represent the fax number.
+
+one would connect the details with the main with iteration. since there is no direct connection
+(at least one i would notice) the result comes from connect the indexes of the records
+(the first record of details connects with the first record of main and so on).

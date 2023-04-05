@@ -1,0 +1,51 @@
+name: ci/cd
+
+on:
+  push:
+
+jobs:
+  health-check-job:
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Set deployment to development
+        run: echo "DEPLOYMENT=development" >> $GITHUB_ENV
+
+      - name: Install cppunit
+        run: sudo apt install -y libcppunit-dev
+      
+      - name: Install valgrind
+        run: sudo apt install -y valgrind
+      
+      - name: Export path to LD_LIBRARY_PATH
+        run: echo "LD_LIBRARY_PATH=$(pwd)" >> $GITHUB_ENV
+      
+      - name: Build the library with in the development environment and create tests
+        run: make test
+
+      - name: Run the tests
+        run: ./executable
+      
+      - name: Check for memory leaks
+        run: make memory_check
+      
+      - name: Upload valgrind results
+        uses: actions/upload-artifact@v3
+        with:
+          name: valgrind_results.txt
+          path: ./valgrind_results.txt
+
+      - name: Set deployment to production
+        run: echo "DEPLOYMENT=production" >> $GITHUB_ENV
+
+      - name: Build the library in the production environment
+        run: make build
+
+      - name: Upload library
+        uses: actions/upload-artifact@v3
+        with:
+          name: libmod.so
+          path: ./libmod.so

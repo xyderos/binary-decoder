@@ -1,0 +1,1 @@
+((c++-mode (c-c++-backend . lsp-clangd)))

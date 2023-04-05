@@ -1,0 +1,9 @@
+-I/usr/include
+-stdlib=libstdc++
+-std=c++20
+-g
+-Weverything
+-xc++
+-Weffc++
+cppcoreguidelines-rule-of-five-and-zero
+-Wno-c++98-compat

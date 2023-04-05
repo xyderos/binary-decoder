@@ -1,0 +1,5 @@
+---
+Checks:          'bugprone-*, cert-*, clang-analyzer-*, concurrency-*, cppcoreguidelines-*, hicpp-*, misc-*, modernize-*, mpi-*, openmp-*, performance-*, portability-* readability-*'
+WarningsAsErrors: '*'
+HeaderFilterRegex: ''
+AnalyzeTemporaryDtors: false

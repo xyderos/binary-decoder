@@ -1,0 +1,5 @@
+/executable
+/libmod.so
+/valgrind_results.txt
+temp_obj_directory/
+temp_test_obj_directory/
